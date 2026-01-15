@@ -39,6 +39,7 @@ public class NaukriTest {
             page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("View & Update Profile")).click();
             page.locator("#lazyResumeHead").getByText("editOneTheme").click();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
+            System.out.println("********** From Save successfully ********");
             page.locator(".nI-gNb-drawer__bars").click();
             page.getByText("Logout").click();
         }
