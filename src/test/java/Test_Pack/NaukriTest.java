@@ -59,7 +59,7 @@ public class NaukriTest {
             
             System.out.println("********** Resume updated successfully ********");
             page.waitForLoadState();
-            page.locator(".nI-gNb-drawer__bars").click();
+          page.locator("//div[@class='nI-gNb-drawer__bars']").click();
             page.getByText("Logout").click();
         }
     }
