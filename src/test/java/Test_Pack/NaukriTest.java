@@ -3,6 +3,7 @@ package Test_Pack;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.*;
 import org.testng.annotations.Test;
+import java.util.Arrays;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -11,8 +12,11 @@ public class NaukriTest {
   @Test
     public void naukriAutomate() {
        try (Playwright playwright = Playwright.create()) {
+            boolean isCI = System.getenv("CI") != null;
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
-                    .setHeadless(false).setSlowMo(1000));
+                    .setHeadless(isCI)
+                    .setSlowMo(isCI ? 0 : 1000)
+                    .setArgs(Arrays.asList("--no-sandbox", "--disable-dev-shm-usage")));
             BrowserContext context = browser.newContext();
             Page page = context.newPage();
 
@@ -29,7 +33,7 @@ public class NaukriTest {
             page.locator("//div[@class='nI-gNb-drawer__bars']").click();
             page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("View & Update Profile")).click();
             page.locator("#lazyResumeHead").getByText("editOneTheme").click();
-            page.locator("#resumeHeadlineTxt").fill("Senior QA Engineer | SDET | Selenium WebDriver + Java | API Automation with Rest Assured | TestNG | Maven | Jenkins CI/CD | Manual & Database Testing | Automation Frameworks");
+            page.locator("#resumeHeadlineTxt").fill("Senior QA Engineer | SDET | Selenium WebDriver + Java | API Automation with Rest Assured | TestNG | Maven | Jenkins CI/CD | Manual & Database Testing")
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
 //
            Locator crossBtn = page.locator("xpath=/html/body/div[6]/div[2]/div[1]/span");
@@ -40,7 +44,7 @@ public class NaukriTest {
 
 
            page.locator("#lazyResumeHead").getByText("editOneTheme").click();
-            page.locator("#resumeHeadlineTxt").fill("Senior QA Engineer | SDET | Selenium WebDriver + Java | API Automation with Rest Assured | TestNG | Maven | Jenkins CI/CD | Manual & Database Testing | Automation Frameworks.");
+            page.locator("#resumeHeadlineTxt").fill("Senior QA Engineer | SDET | Selenium WebDriver + Java | API Automation with Rest Assured | TestNG | Maven | Jenkins CI/CD | Manual & Database Testing")
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Save")).click();
             System.out.println("********** From Save successfully ********");
             page.waitForLoadState();
