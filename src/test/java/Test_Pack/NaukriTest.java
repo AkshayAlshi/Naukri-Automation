@@ -78,9 +78,7 @@ public class NaukriTest {
             Locator resumeHeadline = page.locator("#resumeHeadlineTxt");
 
             resumeHeadline.fill(
-                    "Senior QA Engineer | SDET | Selenium WebDriver + Java | " +
-                            "API Automation with Rest Assured | TestNG | Maven | " +
-                            "Jenkins CI/CD | Manual & Database Testing | Automation Frameworks."
+                    "QA Automation Engineer | SDET | 3.5+ YOE | Selenium Java | REST Assured | API Testing | TestNG | Jenkins | Playwright."
             );
 
             page.getByRole(
@@ -105,9 +103,7 @@ public class NaukriTest {
 
 
             resumeHeadline.fill(
-                    "Senior QA Engineer | SDET | Selenium WebDriver + Java | " +
-                            "API Automation with Rest Assured | TestNG | Maven | " +
-                            "Jenkins CI/CD | Manual & Database Testing | Automation Frameworks"
+                    "QA Automation Engineer | SDET | 3.5+ YOE | Selenium Java | REST Assured | API Testing | TestNG | Jenkins | Playwright"
             );
 
             page.getByRole(
