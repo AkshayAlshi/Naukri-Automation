@@ -17,7 +17,7 @@ public class NaukriTest {
             Browser browser = playwright.chromium().launch(
                     new BrowserType.LaunchOptions()
                             .setHeadless(true)
-                            // .setSlowMo(1000)
+                             .setSlowMo(1000)
             );
 
             BrowserContext context = browser.newContext();
